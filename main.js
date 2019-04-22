@@ -349,6 +349,8 @@ window.onload = function () {
 //
     var loadScene = new Scene();	
     Game.loadingScene = loadScene;
+    var loadImg = new Sprite(320,320);
+    var loadLabel = new Label();
 
     Game.preload('img/load.png');
     loadScene.addEventListener('progress', function(e) {
@@ -356,20 +358,20 @@ window.onload = function () {
         progress *= 100;
         progress = Math.round(progress);
 
-        var loadImg = new Sprite(320,320);
+        
         loadImg.x = DISPLAY_X/2-160;
-        loadImg.Y = DISPLAY_Y/2-160;
+        loadImg.Y = DISPLAY_Y/2;
         loadImg.image = Game.assets['img/load.png'];
         loadScene.addChild(loadImg);
 
-        var label = new Label();
-        label.y =  DISPLAY_Y/2+60;
-        label.width = DISPLAY_X;
-        label.font = '25px sans-serif';
+        
+        loadLabel.y =  DISPLAY_Y/2+60;
+        loadLabel.width = DISPLAY_X;
+        loadLabel.font = '25px sans-serif';
         label.textAlign = 'center';
-        label.text = "LOADING..." + progress;
-        label.color = '#000';
-        loadScene.addChild(label);
+        loadLabel.text = "LOADING..." + progress;
+        // label.color = '#000';
+        loadScene.addChild(loadLabel);
     });
     loadScene.addEventListener('load', function(e) {
         var core = enchant.Core.instance;
