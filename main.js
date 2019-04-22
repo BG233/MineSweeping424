@@ -56,7 +56,7 @@ var Block = enchant.Class.create(enchant.Sprite, {
                 }
 
                 //广搜一下把白的都点了
-                var queue = [];
+                let queue = [];
                 queue.push([this.posX, this.posY]);
                 while(queue.length>0){
 
