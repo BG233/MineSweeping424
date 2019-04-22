@@ -368,7 +368,7 @@ window.onload = function () {
         loadLabel.y =  DISPLAY_Y/2+60;
         loadLabel.width = DISPLAY_X;
         loadLabel.font = '25px sans-serif';
-        label.textAlign = 'center';
+        loadLabel.textAlign = 'center';
         loadLabel.text = "LOADING..." + progress;
         // label.color = '#000';
         loadScene.addChild(loadLabel);
