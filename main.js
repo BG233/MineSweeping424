@@ -349,7 +349,7 @@ window.onload = function () {
 //
     var loadScene = new Scene();	
     Game.loadingScene = loadScene;
-    var loadImg = new Sprite(320,320);
+   
     var loadLabel = new Label();
 
     Game.preload('img/load.png');
@@ -358,7 +358,7 @@ window.onload = function () {
         progress *= 100;
         progress = Math.round(progress);
 
-        
+        var loadImg = new Sprite(320,320);
         loadImg.x = DISPLAY_X/2-160;
         loadImg.Y = DISPLAY_Y/2;
         loadImg.image = Game.assets['img/load.png'];
