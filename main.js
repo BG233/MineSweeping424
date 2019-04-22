@@ -363,10 +363,12 @@ window.onload = function () {
         loadScene.addChild(loadImg);
 
         var label = new Label();
-        label.x = DISPLAY_X/2-160;
-        label.y = DISPLAY_Y/2;
+        label.y =  DISPLAY_Y/2+60;
+        label.width = DISPLAY_X;
+        label.font = '25px sans-serif';
+        label.textAlign = 'center';
         label.text = "LOADING..." + progress;
-        label.color = '#FFF';
+        label.color = '#000';
         loadScene.addChild(label);
     });
     loadScene.addEventListener('load', function(e) {
