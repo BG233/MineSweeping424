@@ -360,7 +360,7 @@ window.onload = function () {
 
         var loadImg = new Sprite(320,320);
         loadImg.x = DISPLAY_X/2-160;
-        loadImg.Y = DISPLAY_Y/2;
+        loadImg.y = DISPLAY_Y/2-320;
         loadImg.image = Game.assets['img/load.png'];
         loadScene.addChild(loadImg);
 
