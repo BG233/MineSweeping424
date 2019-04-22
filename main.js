@@ -358,9 +358,9 @@ window.onload = function () {
         progress *= 100;
         progress = Math.round(progress);
 
-        var loadImg = new Sprite(320,320);
-        loadImg.x = DISPLAY_X/2-160;
-        loadImg.y = DISPLAY_Y/2-320;
+        var loadImg = new Sprite(100,100);
+        loadImg.x = DISPLAY_X/2-50;
+        loadImg.y = DISPLAY_Y/2-100;
         loadImg.image = Game.assets['img/load.png'];
         loadScene.addChild(loadImg);
 
