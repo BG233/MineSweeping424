@@ -1,6 +1,7 @@
-/*  写给自己:
-        哈哈傻了吧，叫泥先写代码再想这代码应该干啥，写出八阿哥懒得改了吧
-    19.04.21
+/*  
+    Last msg: 19.04.21
+    乱写一时爽，出了八阿哥看泥怎么办
+    （（不过代码也没几行泥就肉眼杀虫⑧
 */
 
 enchant();
@@ -209,9 +210,7 @@ var Chara = enchant.Class.create(enchant.Sprite, {
         var check = function (x,y,isLastUndo){
             if (x < row && y < col && x >= 0 && y >= 0){
                 if(operatableMap[x][y]==false){
-                    if(!isLastUndo && blkList[x][y].backgroundColor !== undoColor)
-                        return true;
-                    if (!isLastUndo && blkList[x][y].backgroundColor === undoColor)
+                    if(!isLastUndo)
                         return true;
                 }
             }
@@ -276,14 +275,8 @@ var Chara = enchant.Class.create(enchant.Sprite, {
         if(blkList[this.posX][this.posY].num===9){
 
             this.image = Game.assets[this.loseImg];
-            this.tl.rotateBy(15,4);
-            this.tl.rotateBy(-15,4);
-            this.tl.rotateBy(-15,4);
-            this.tl.rotateBy(15,4);
-            this.tl.rotateBy(15,4);
-            this.tl.rotateBy(-15,4);
-            this.tl.rotateBy(-15,4);
-            this.tl.rotateBy(15,4)
+            this.tl.rotateBy(15,4);this.tl.rotateBy(-15,4);this.tl.rotateBy(-15,4);this.tl.rotateBy(15,4);
+            this.tl.rotateBy(15,4);this.tl.rotateBy(-15,4);this.tl.rotateBy(-15,4);this.tl.rotateBy(15,4)
             .then(function(){
                 if (this.name==='uzuki')
                     Game.replaceScene(Scenes.loseScene(1));
@@ -320,28 +313,19 @@ var Chara = enchant.Class.create(enchant.Sprite, {
                 chara1.tl
                 .moveBy(0, 0, 10).then(function(){
                     chara2.image = Game.assets[chara2.winImg];
-                    chara2.tl
-                    .moveBy(0, -25, t);
-                    chara2.tl
-                    .moveBy(0, 25, t);
-                    chara2.tl
-                    .moveBy(0, -25, t);
-                    chara2.tl
-                    .moveBy(0, 25, t)
+                    chara2.tl.moveBy(0, -25, t);
+                    chara2.tl.moveBy(0, 25, t);
+                    chara2.tl.moveBy(0, -25, t);
+                    chara2.tl.moveBy(0, 25, t)
                     .then(function(){
                         chara1.tl
                         .moveBy(0, 0, 10).then(function(){
                             chara1.image = Game.assets[chara1.winImg];
-                            chara1.tl
-                            .moveBy(0, -25, t);
-                            chara1.tl
-                            .moveBy(0, 25, t);
-                            chara1.tl
-                            .moveBy(0, -25, t);
-                            chara1.tl
-                            .moveBy(0, 25, t);
-                            chara1.tl
-                            .moveBy(0, 0, t)
+                            chara1.tl.moveBy(0, -25, t);
+                            chara1.tl.moveBy(0, 25, t);
+                            chara1.tl.moveBy(0, -25, t);
+                            chara1.tl.moveBy(0, 25, t);
+                            chara1.tl.moveBy(0, 0, t)
                             .then(function(){
                                 Game.replaceScene(Scenes.winScene());
                             });
@@ -361,6 +345,8 @@ window.onload = function () {
 
     Game = new Core(DISPLAY_X, DISPLAY_Y);
     Game.fps = FPS;
+
+    // Game.loadingScene.backgroundColor = '#FFCEC9';
 
     Game.preload(
         'img/next.png',
