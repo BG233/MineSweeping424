@@ -346,6 +346,35 @@ window.onload = function () {
     Game = new Core(DISPLAY_X, DISPLAY_Y);
     Game.fps = FPS;
 
+//
+    var loadScene = new Scene();	
+    Game.loadingScene = loadScene;
+
+    Game.preload('img/load.png');
+    loadScene.addEventListener('progress', function(e) {
+        var progress = e.loaded / e.total;
+        progress *= 100;
+        progress = Math.round(progress);
+
+        var loadImg = new Sprite(320,320);
+        loadImg.x = DISPLAY_X/2-160;
+        loadImg.Y = DISPLAY_Y/2-160;
+        loadImg.image = Game.assets['img/load.png'];
+        loadScene.addChild(loadImg);
+
+        var label = new Label();
+        label.x = DISPLAY_X/2-160;
+        label.y = DISPLAY_Y/2;
+        label.text = "LOADING..." + progress;
+        label.color = '#FFF';
+        loadScene.addChild(label);
+    });
+    loadScene.addEventListener('load', function(e) {
+        var core = enchant.Core.instance;
+        core.removeScene(core.loadingScene);
+        core.dispatchEvent(e);
+    });
+
     // Game.loadingScene.backgroundColor = '#FFCEC9';
 
     Game.preload(
@@ -354,6 +383,7 @@ window.onload = function () {
         'img/start.png',
         'img/back.png',
 
+        'img/help0.png',
         'img/help1.png',
         'img/help2.png',
         'img/help3.png',
@@ -384,11 +414,11 @@ window.onload = function () {
             var scene = new Scene();
             scene.backgroundColor = '#FFFFFF';
 
-            let page = 1;
+            let page = 0;
             let tot = 4;
 
             bg = new  Sprite(DISPLAY_X,DISPLAY_Y);
-            bg.image = Game.assets['img/help1.png'];
+            bg.image = Game.assets['img/help0.png'];
             scene.addChild(bg);
 
             var label = new Label();
@@ -425,7 +455,7 @@ window.onload = function () {
             });
 
             last.addEventListener(Event.TOUCH_END, function (e) {
-                if(page>1){
+                if(page>0){
                     page--;
                     bg.image = Game.assets['img/help'+page+'.png'];
                     label.text = page+"/"+tot;
