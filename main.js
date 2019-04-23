@@ -56,11 +56,11 @@ var Block = enchant.Class.create(enchant.Sprite, {
                 }
 
                 //广搜一下把白的都点了
-                let queue = [];
+                var queue = [];
                 queue.push([this.posX, this.posY]);
                 while(queue.length>0){
 
-                    let head = queue.shift();
+                    var head = queue.shift();
                     blkList[head[0]][head[1]].backgroundColor = blankColor;
 
                     if(checkOK(head[0]-1,head[1]))
@@ -196,9 +196,9 @@ var Chara = enchant.Class.create(enchant.Sprite, {
     },
     operatablePlace: function(){ // 正在这里，换角色重置 operatableMap
         //重置map
-        for(let i = 0; i<row ; i++){
+        for(var i = 0; i<row ; i++){
             operatableMap[i] = new Array();
-            for(let j = 0; j<col; j++){
+            for(var j = 0; j<col; j++){
                 operatableMap[i][j] = false;
                 blkList[i][j].image = Game.assets['img/blank.png']; 
             }
@@ -219,11 +219,11 @@ var Chara = enchant.Class.create(enchant.Sprite, {
         }
 
         //可行走区域
-        let queue = [];
+        var queue = [];
         queue.push([this.posX, this.posY]);
         while(queue.length>0){
 
-            let head = queue.shift();
+            var head = queue.shift();
             blkList[head[0]][head[1]].image = Game.assets['img/mark.png']; 
 
             operatableMap[head[0]][head[1]] = true;
@@ -288,9 +288,9 @@ var Chara = enchant.Class.create(enchant.Sprite, {
         }
         //win
         else if(this.posY===this.pair.posY){
-            let chara1;
-            let chara2;
-            let winFlag = false;
+            var chara1;
+            var chara2;
+            var winFlag = false;
             if(this.name=='uzuki'){
                 if(this.pair.posX-1 === this.posX){
                     chara1 = this;
@@ -308,7 +308,7 @@ var Chara = enchant.Class.create(enchant.Sprite, {
             }
 
             if(winFlag){
-                let t = 6;
+                var t = 6;
 
                 chara1.tl
                 .moveBy(0, 0, 10).then(function(){
@@ -418,8 +418,8 @@ window.onload = function () {
             var scene = new Scene();
             scene.backgroundColor = '#FFFFFF';
 
-            let page = 0;
-            let tot = 4;
+            var page = 0;
+            var tot = 4;
 
             bg = new  Sprite(DISPLAY_X,DISPLAY_Y);
             bg.image = Game.assets['img/help0.png'];
@@ -488,11 +488,11 @@ window.onload = function () {
             scene.backgroundColor = '#FFFFFF';
             
             
-            for(let i = 0; i<4 ; i++){
+            for(var i = 0; i<4 ; i++){
                 blkList[i] = new Array();
                 operatableMap[i] = new Array();
 
-                for(let j = 0; j<6; j++){
+                for(var j = 0; j<6; j++){
                     var blk = new Block();
                     blk.place(i,j);
                     blkList[i][j] = blk;
